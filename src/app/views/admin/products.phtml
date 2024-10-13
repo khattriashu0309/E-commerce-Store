@@ -1,0 +1,74 @@
+<?php include('header.phtml');?>      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Products</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+        <form class="row row-cols-lg-auto g-3 align-items-center" method="POST">
+          <div class="col-12">
+            <label class="visually-hidden" for="inlineFormInputGroupUsername">Search</label>
+            <div class="input-group">
+              <input type="text" name="value" class="form-control" placeholder="Enter id,name..." id="myInput">
+            </div>
+          </div>
+
+          <div class="col-12">
+            <a class="btn btn-success" href="addproduct">Add Product</a>
+          </div>
+        </form>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm  " id='myTable'>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Edit Record</th>
+                <th scope="col">Delete Record</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $a = '';
+              foreach ($data as $product) {
+                $a .= ("<tr class='check' ><td>" . $product->id . "</td><td>" . $product->pname . "</td><td>" . $product->pcategory . "</td><td>" . $product->price . "</td><td><form method='POST' action='updateproduct'><input type='hidden' name='change' value=" . $product->id . " /><input type='submit' name='changestatus' value='Edit' /></form ></td><td><form method='POST' action='products'><input type='hidden' name='id' value=" . $product->id . " /><input type='submit' name='delete' value='Delete' /></form></td></tr>");
+              }
+              echo $a;
+              ?>
+            </tbody>
+          </table>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+
+
+      $("#myInput").on("keyup", function() {
+        console.log("Hello");
+        var value = $(this).val().toLowerCase();
+        console.log(value);
+        $("#myTable .check").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<?php include('header.phtml');?>
+
+      
+
+
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">My Profile</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+       
+
+   
+<main class="form-signin" style="width: 40%;">
+  <form method="POST" action="profile">
+
+
+    <div class="form-floating mt-2 ">
+      <input type="text" required class="form-control" id="floatingInput" name="fname" placeholder="name@example.com" value=<?php echo $data[0]->firstname ?>>
+      <label for="floatingInput">First Name</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" required class="form-control" id="floatingInput" name="lname" placeholder="name@example.com" value=<?php echo   $data[0]->lastname ?>>
+      <label for="floatingInput">Last Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="email" required class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value=<?php echo  $data[0]->email ?>>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" required class="form-control" id="floatingPassword" name="pass" placeholder="Password" value=<?php echo   $data[0]->userpassword ?>>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <br>
+    <input class="w-100 btn btn-lg btn-primary"  type="submit" name="update" value="Update">
+    </main>
+
+
+
+    <p class="mt-5 mb-3 text-muted">&copy; CEDCOSS Technologies</p>
+
+  </form>
+
+
+
+
+
+
+ 
+  <script src=" ../../../public/node_modules/bootstrap/dist/js/bootstrap.bundle.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

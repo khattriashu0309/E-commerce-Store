@@ -1,0 +1,62 @@
+<?php include('header.phtml');?>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Add Product</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+        <form class="row g-3" method="POST" enctype = "multipart/form-data" action="addproduct">
+        
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Product Name</label>
+            <input type="text" class="form-control" name="pname" id="inputPassword4">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Product Category</label>
+            <input type="text" class="form-control" id="inputAddress" name="category" placeholder="Category">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Market Price</label>
+            <input type="text" class="form-control" id="inputAddress2" name="price" placeholder="Price">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Store Address with City</label>
+            <input type="text" class="form-control" id="inputCity" name="city">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <input type="text" id="inputState" placeholder="State" class="form-control" name="state">
+
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip" name="zip">
+          </div>
+         <div class="form-group">
+    <label for="fieldImageFile" class="col-sm-2 control-label">Upload your Image</label>
+    <div class="col-sm-4">
+        <?php echo $this->tag->fileField(["image", "size" => 30, "class" => "form-control", "id" => "fieldImageFile"]) ?>
+    </div>
+</div>
+          
+          <div class="col-12">
+            <input type="submit" class="btn btn-primary" name="addproduct" value="Add Product">
+
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

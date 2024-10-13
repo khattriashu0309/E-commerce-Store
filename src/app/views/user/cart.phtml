@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Checkout example · Bootstrap v5.1</title>
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<?php   error_reporting(0);?>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+   
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Cart</h2>
+      </div>
+
+      <div class="row g-5">
+        <div class="col order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill"><?php  echo count($t)  ?></span>
+          </h4>
+          <table class="table">
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+            <tbody>
+              <?php
+            
+           $total = 0;
+            foreach($t as $key=>$v)
+            {
+              echo "<tr><td>" . $v['name'] . "</td><td>" . $v['price'] . "</td><td class=d-flex justify-content-center><form method='POST' action='cart'><input type='hidden' name='id' value='" . $v['id'] . "'> <input type='number' name='quantity' value=" . $v['quantity'] . "><input type='submit' class='setbutton' value='Update' name='update'></form>&nbsp;&nbsp;<form method='POST' method='cart'><input type='hidden' value=" . $v['id'] . " name='delval'><input type='submit' value='X' name='deleterecord'></form></td><td>" . ($v['price'] * $v['quantity']) . "</td></tr>";
+                 $total = $total + $v['price'] * $v['quantity'];
+            }
+              ?>
+            </tbody>
+            <tfoot>
+              <?php
+              if (count($t) != 0) {
+                echo "<tr><td>Total Value:</td><td>$total</td></tr>";
+              }
+              ?>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="row g-5 align-items-right">
+        <div class="col-3">
+          <form method="POST" action="checkout">
+            <input type="submit" class="btn btn-primary" name="checkout" value="Checkout">
+          </form>
+        </div>
+        <div>
+
+          <a href="shop" class="btn btn-danger">Go Back</a>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017–2021 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="./assets/js/form-validation.js"></script>
+
+</body>
+
+</html>
